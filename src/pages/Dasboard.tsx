@@ -15,14 +15,14 @@ const Dashboard: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState<"RECEITA" | "DESPESA" | null>(null);
   const [editingFinance, setEditingFinance] = useState<Finance | null>(null);
-  const [newFinance, setNewFinance] = useState({
+
+  const [newFinance, setNewFinance] = useState<Omit<Finance, "id">>({
     description: "",
     amount: 0,
-    typeFinances: "RECEITA" as const,
-    status: null as "PAGO" | "PENDENTE" | "ATRASADO" | null,
+    typeFinances: "RECEITA",
+    status: null,
   });
 
-  // Estados para o modal de confirmação de deleção
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [financeToDelete, setFinanceToDelete] = useState<Finance | null>(null);
 
@@ -51,7 +51,6 @@ const Dashboard: React.FC = () => {
 
   const handleOpenModal = (type: "RECEITA" | "DESPESA") => {
     if (type === "DESPESA") {
-      // Ao adicionar uma nova despesa, define status como "PENDENTE" automaticamente
       setNewFinance({ description: "", amount: 0, typeFinances: type, status: "PENDENTE" });
     } else {
       setNewFinance({ description: "", amount: 0, typeFinances: type, status: null });
@@ -87,13 +86,11 @@ const Dashboard: React.FC = () => {
     setShowModal(true);
   };
 
-  // Abre modal de confirmação de deleção
   const handleOpenDeleteModal = (finance: Finance) => {
     setFinanceToDelete(finance);
     setShowDeleteModal(true);
   };
 
-  // Confirma deleção
   const handleConfirmDelete = async () => {
     if (financeToDelete) {
       try {
@@ -112,7 +109,6 @@ const Dashboard: React.FC = () => {
     setFinanceToDelete(null);
   };
 
-  // Formata o valor para exibir como moeda no input (ex: R$ 10,00)
   const formatCurrencyInput = (value: number) => {
     return new Intl.NumberFormat("pt-BR", {
       style: "currency",
@@ -120,10 +116,8 @@ const Dashboard: React.FC = () => {
     }).format(value);
   };
 
-  // Função que trata a mudança do input de valor
   const handleCurrencyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const rawValue = e.target.value;
-    // Remove tudo que não for dígito
     const numericString = rawValue.replace(/\D/g, "");
     const parsedValue = parseFloat(numericString) / 100;
     setNewFinance({ ...newFinance, amount: isNaN(parsedValue) ? 0 : parsedValue });
@@ -228,7 +222,6 @@ const Dashboard: React.FC = () => {
               value={newFinance.amount ? formatCurrencyInput(newFinance.amount) : ""}
               onChange={handleCurrencyChange}
             />
-            {/* Exibe o select de status somente na edição de despesa */}
             {modalType === "DESPESA" && editingFinance && (
               <select
                 value={newFinance.status || ""}

@@ -1,0 +1,265 @@
+/* Reset básico */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #000000;
+  background: #000000;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Container principal */
+.dashboard-container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 1rem 2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #1A1A1A;
+  box-sizing: border-box;
+}
+
+.dashboard-title {
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #39FF14;
+}
+
+.resumo-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  gap: 1rem;
+  width: 100%;
+}
+
+.resumo-item {
+  flex: 1;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 1rem;
+  background-color: #1a1a1a;
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(17, 17, 17, 0.3);
+}
+
+.receita {
+  color: green !important;
+  font-weight: bold;
+}
+
+.despesa {
+  color: red !important;
+  font-weight: bold;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+  width: 100%;
+}
+
+.button-receita,
+.button-despesa {
+  padding: 0.5rem 1rem;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.button-receita {
+  background-color: green;
+}
+
+.button-despesa {
+  background-color: red;
+}
+
+.tables-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.finance-table {
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+  color: #1A1A1A;
+}
+
+.table-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #1A1A1A;
+}
+
+.table-subheader,
+.table-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  align-items: center;
+  text-align: center;
+  color: #1A1A1A;
+}
+
+.table-subheader {
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.5rem;
+}
+
+.table-row {
+  border-bottom: 1px solid #eee;
+}
+
+.row-item {
+  padding: 0.5rem 0;
+  text-align: center;
+}
+
+/* Botões de ação com largura padronizada */
+.row-item.action button {
+  min-width: 80px;
+  margin: 0 4px;
+}
+
+.btn-deletar {
+  background-color: #b22222;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-deletar:hover {
+  background-color: #8b0000;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: #fefefe;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 400px;
+  position: relative;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+  color: #1A1A1A;
+}
+
+/* Modal para despesas com borda e sombra vermelha */
+.modal-despesa {
+  border: 2px solid red;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+}
+
+/* Modal para receitas com borda verde */
+.modal-receita {
+  border: 2px solid green;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #1A1A1A;
+}
+
+.modal h3 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.modal input,
+.modal select {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  color: #1A1A1A;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: box-shadow 0.2s;
+}
+
+/* Foco para inputs dentro do modal de Receita */
+.modal input:focus,
+.modal select:focus {
+  box-shadow: 0 0 5px rgba(57, 255, 20, 0.6);
+  border-color: #39FF14;
+}
+
+/* Sobrescrevendo o foco para inputs dentro do modal de Despesa */
+.modal-despesa input:focus,
+.modal-despesa select:focus {
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.6);
+  border-color: red;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.modal-cancel,
+.modal-confirm {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.confirm-receita {
+  background-color: green;
+  color: white;
+}
+
+.confirm-despesa {
+  background-color: red;
+  color: white;
+}
+
+.modal-cancel {
+  background-color: #ccc;
+  color: #1A1A1A;
+}
+
+/* Estilo específico para o modal de deleção */
+.modal-delete {
+  text-align: center;
+}

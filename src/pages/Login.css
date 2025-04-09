@@ -1,0 +1,111 @@
+/* Garante que o HTML e o body ocupem a tela toda */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0f0f0f 0%, #121212 50%, #00ff9d 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+  
+  
+  /* Fundo com gradiente escuro sutil */
+.login-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  
+  /* Caixa escura com bordas suaves */
+  .login-box {
+    background-color: #1e1e1e;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 255, 128, 0.1);
+    width: 100%;
+    max-width: 400px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Título com verde neon */
+  .login-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #00ff9d;
+    font-weight: 600;
+  }
+  
+  /* Formulário vertical */
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Inputs com cor clara e foco verde */
+  .login-form input {
+    padding: 12px;
+    background-color: #2c2c2c;
+    color: #ffffff;
+    border: 1px solid #444;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border 0.2s ease;
+  }
+  
+  .login-form input::placeholder {
+    color: #999;
+  }
+  
+  .login-form input:focus {
+    border-color: #00ff9d;
+    outline: none;
+  }
+  
+  /* Botão neon */
+  .login-form button {
+    padding: 12px;
+    background-color: #00ff9d;
+    color: #0f0f0f;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .login-form button:disabled {
+    background-color: #444;
+    color: #999;
+    cursor: not-allowed;
+  }
+  
+  .login-form button:hover:not(:disabled) {
+    background-color: #00e68a;
+  }
+  
+  /* Texto de alternância */
+  .toggle-text {
+    text-align: center;
+    margin-top: 20px;
+    color: #ccc;
+  }
+  
+  .toggle-text span {
+    color: #00ff9d;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  /* Mensagem de erro */
+  .error {
+    text-align: center;
+    color: #ff5e5e;
+    margin-bottom: 10px;
+  }
+  
